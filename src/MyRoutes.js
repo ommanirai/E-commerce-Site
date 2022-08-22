@@ -26,6 +26,10 @@ import DeleteProduct from "./components/pages/Products/DeleteProduct";
 import ProductDetailss from "./components/pages/Products/ProductDetails";
 import ConfirmOrder from "./components/pages/ConfirmOrder";
 import Shipping from "./components/pages/Shipping";
+import PaymentElement from "./components/pages/PaymentElement";
+import PaymentSuccess from "./components/pages/PaymentSuccess";
+import UserProfile from "./components/pages/User/UserProfile";
+import MyOrders from "./components/pages/User/MyOrders";
 
 
 const MyRoutes = () => {
@@ -55,6 +59,10 @@ const MyRoutes = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="confirmorder" element={<ConfirmOrder />} />
           <Route path="/shipping" element={<Shipping />} />
+          <Route path="/payment" element={<PaymentElement />} />
+          <Route path="paymentsuccess" element={<PaymentSuccess />} />
+          <Route path="user/profile" element={<UserProfile/>}/>
+          <Route path="/user/myorders" element={<MyOrders/>}/>
         </Route>
 
         <Route path="/product/:id" element={<ProductDetailss />} />

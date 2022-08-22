@@ -9,8 +9,11 @@ import { addItemToCart } from '../../../redux/actions/cartActions'
 import { useDispatch } from 'react-redux'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import { isAuthenticated } from '../../../api/userAPI'
+import UserProfile from '../User/UserProfile'
 
 const ProductDetailss = () => {
+    const {user} = isAuthenticated()
     const { id } = useParams()
     const [product, setProduct] = useState({})
     const [relatedProducts, setRelatedProducts] = useState([])
@@ -61,8 +64,10 @@ const ProductDetailss = () => {
                     <h5 className='mb-2'>Rs. {product.product_price}</h5>
                     <h5 className='mb-2'>Available: {product.count_in_stock}</h5>
                     <p className='mb-5'>Description: {product.product_description}</p>
-
+                    {
+                        ((user && user.role ===  0) || !user) && 
                     <button className='btn btn-warning form-control' onClick={addToCart}>Add to Cart</button>
+                    }
                 </div>
             </div>
             <div className='row row-cols-md-4 g-4'>

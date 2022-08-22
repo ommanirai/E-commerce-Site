@@ -1,19 +1,27 @@
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react'
-import { API } from '../../config'
+import { API } from '../../config';
+import Payment from './Payment';
 
 const PaymentElement = () => {
     const [stripeApiKey, setStripeApiKey] = useState('')
 
     useEffect(() => {
-        return fetch(`${API}/stripeAPIKey`, {
+        getStripeKey()
+            .then(data => setStripeApiKey(data.stripeAPIKey))
+            .catch(err => console.log(err))
+    },[])
+
+    const getStripeKey = () => {
+        return fetch(`${API}/stripeAPIKey`, {   
             method: 'GET'
         })
             .then(res => res.json())
-            .then(data => setStripeApiKey(data.stripeApiKey))
             .catch(err => console.log(err))
-    })
+    }
 
-
+console.log(stripeApiKey)
     return (
         <>
             {

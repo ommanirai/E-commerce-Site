@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const CheckoutProgress = (shipping, payment) => {
+const CheckoutProgress = ({shipping, payment}) => {
   return (
     <>
     <div className='d-flex justify-content-evenly mt-5'>
@@ -19,11 +19,6 @@ const CheckoutProgress = (shipping, payment) => {
             <button className='btn btn-warning' disabled>Payment</button>
         }
     </div>
-
-    
-    
-    
-    
     </>
   )
 }
